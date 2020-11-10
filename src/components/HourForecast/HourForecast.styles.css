@@ -1,0 +1,7 @@
+.twelve-hours-forecast__hourly {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	width: 100%;
+}
