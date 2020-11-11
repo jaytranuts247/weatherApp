@@ -15,10 +15,6 @@ class App extends Component {
 			searchedName: "",
 
 			cityName: "",
-			// temperatureMetric: null,
-			// temperatureImperial: null,
-			// weatherText: "",
-			// weatherIcon: null,
 			currentWeatherData: null,
 			fiveDailyForecastData: null,
 			twelveHoursForecastData: null,

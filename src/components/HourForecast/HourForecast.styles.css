@@ -4,4 +4,13 @@
 	justify-content: space-around;
 	align-items: center;
 	width: 100%;
+	margin: 0.5rem 1rem 0.5rem 1rem;
+}
+
+.twelve-hours-forecast__hourly h3 {
+	margin-bottom: 0.5rem;
+}
+
+.twelve-hours-forecast__hourly--icon-phrase {
+	margin-top: 1rem;
 }

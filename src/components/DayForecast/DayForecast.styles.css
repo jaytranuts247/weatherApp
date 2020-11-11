@@ -5,3 +5,10 @@
 	align-items: center;
 	width: 100%;
 }
+.five-day-forecast__daily h3 {
+	margin-bottom: 0.5rem;
+}
+
+.five-day-forecast__daily--icon-phrase {
+	margin-top: 1rem;
+}

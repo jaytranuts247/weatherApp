@@ -12,4 +12,4 @@ export const dateTime = () => {
 
 export const getDate = (date) => date.slice(5, 10);
 
-export const getTime = (time) => time.slice(11, 15);
+export const getTime = (time) => time.slice(11, 16);

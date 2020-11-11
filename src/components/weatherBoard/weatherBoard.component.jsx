@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./weatherBoard.styles.css";
 
 import { dateTime } from "../../utils/DateTime";
 import DayForecast from "../DayForecast/DayForecast.component";
-import { twelveHoursForecast } from "../../utils/utilities";
+import HourForecast from "../HourForecast/HourForecast.component";
+
+import { IconContext } from "react-icons";
+import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import { fchmod } from "fs";
 
 const images = require.context("../../../public/img", true);
 
@@ -31,6 +35,8 @@ const WeatherBoard = ({
 	console.log("twelveHoursForecastData", twelveHoursForecastData);
 
 	let image = images("./" + ("0" + weatherIcon).slice(-2) + "-s.png");
+
+	const hourRef = useRef();
 
 	return (
 		<div className="weather-board">
@@ -115,12 +121,87 @@ const WeatherBoard = ({
 					))}
 				</div>
 				<div className="twelve-hours-forecast__panel">
-					{twelveHoursForecastData.map((hourData) => (
-						<twelveHoursForecast key={hourData.DateTime} hourData={hourData} />
-					))}
+					<div className="twelve-hours-forecast__panel-container" ref={hourRef}>
+						{" "}
+						{twelveHoursForecastData.map((hourData) => (
+							<HourForecast key={hourData.DateTime} hourData={hourData} />
+						))}
+					</div>
+
+					<ForwardArrow hourRef={hourRef} />
+					<BackArrow hourRef={hourRef} />
 				</div>
 			</div>
 		</div>
+	);
+};
+
+const ForwardArrow = ({ hourRef }) => {
+	const changeBackgroundDefault = (e) => {
+		e.target.style.background = "white";
+	};
+	const changeBackgroundHover = (e) => {
+		e.target.style.background = "#aabbb5";
+	};
+	const handleClick = () => {
+		hourRef.current.scrollLeft -= 20;
+	};
+	return (
+		<IconContext.Provider
+			value={{
+				style: {
+					position: "absolute",
+					height: "100%",
+					width: "2rem",
+					top: "0",
+					right: "0",
+					backgroundColor: "green",
+				},
+			}}
+		>
+			<div
+				className="forward-arrow"
+				onClick={handleClick}
+				onMouseOver={changeBackgroundHover}
+				onMouseOut={changeBackgroundDefault}
+			>
+				<IoIosArrowForward />
+			</div>
+		</IconContext.Provider>
+	);
+};
+
+const BackArrow = ({ hourRef }) => {
+	const changeBackgroundDefault = (e) => {
+		e.target.style.background = "white";
+	};
+	const changeBackgroundHover = (e) => {
+		e.target.style.background = "#aabbb5";
+	};
+	const handleClick = () => {
+		hourRef.current.scrollLeft += 20;
+	};
+	return (
+		<IconContext.Provider
+			value={{
+				style: {
+					position: "absolute",
+					height: "100%",
+					width: "2rem",
+					top: "0",
+					left: "0",
+				},
+			}}
+		>
+			<div
+				className="back-arrow"
+				onClick={handleClick}
+				onMouseOver={changeBackgroundHover}
+				onMouseOut={changeBackgroundDefault}
+			>
+				<IoIosArrowBack />
+			</div>
+		</IconContext.Provider>
 	);
 };
 

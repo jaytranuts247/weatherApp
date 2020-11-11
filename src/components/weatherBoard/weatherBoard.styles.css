@@ -139,8 +139,22 @@
 .twelve-hours-forecast__panel {
 	display: flex;
 	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	overflow: auto;
+}
+
+.twelve-hours-forecast__panel-container {
+	display: flex;
+	flex-direction: row;
 	justify-content: space-evenly;
 	align-items: center;
+
+	position: relative;
+	overflow: auto;
 	margin-top: 1.5rem;
+	margin-left: 3rem;
+	margin-right: 3rem;
 	width: 100%;
 }
