@@ -141,8 +141,10 @@
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
+	align-content: center;
 	position: relative;
 	overflow: auto;
+	margin-top: 1.5rem;
 }
 
 .twelve-hours-forecast__panel-container {
@@ -153,7 +155,6 @@
 
 	position: relative;
 	overflow: auto;
-	margin-top: 1.5rem;
 	margin-left: 3rem;
 	margin-right: 3rem;
 	width: 100%;

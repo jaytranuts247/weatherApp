@@ -11,8 +11,6 @@ html {
 
 	width: 100%;
 	min-height: 100%;
-	/* padding: 0 !important; */
-	/* margin-top: -20px; */
 	background: linear-gradient(
 		to bottom right,
 		rgba(63, 94, 251, 1) 0%,
@@ -25,7 +23,6 @@ html {
 
 body {
 	font-family: "Open Sans Condensed";
-	/* padding: 20px 40px; */
 }
 
 a {
@@ -37,25 +34,11 @@ a {
 	box-sizing: border-box;
 }
 
-.background-gradient {
-	/* position: absolute;
-	width: 100%;
-	min-height: 100vh; */
-	/* padding: 0 !important; */
-	/* margin-top: -20px;
-	background: linear-gradient(
-		to bottom right,
-		rgba(63, 94, 251, 1) 0%,
-		rgba(252, 70, 107, 1) 100%
-	); */
-	/* z-index: -100; */
-}
-
 .top-banner {
 	margin: auto;
 }
 .heading {
-	font-size: xx-large;
+	font-size: 5rem;
 	font-weight: 700;
 	color: white;
 }
@@ -72,7 +55,7 @@ a {
 }
 
 .form {
-	margin-top: 2rem;
+	margin-top: 2.5rem;
 	width: 100%;
 	display: flex;
 	justify-content: center;
@@ -108,4 +91,10 @@ a {
 
 .form button {
 	outline: none;
+}
+
+@media (max-width: 1024px) {
+	.container {
+		width: 80%;
+	}
 }

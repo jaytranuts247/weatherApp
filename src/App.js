@@ -27,7 +27,6 @@ class App extends Component {
 		fiveDailyForecastData,
 		twelveHoursForecastData
 	) => {
-		console.log("setWeatherInfoState called ");
 		this.setState({
 			cityName: cityName,
 			isWeatherMode: true,
@@ -38,15 +37,9 @@ class App extends Component {
 	};
 
 	handleChange = (e) => {
-		console.log("HandleClick App js Called ");
-		this.setState(
-			{
-				searchedName: e.target.value,
-			},
-			() => {
-				console.log(this.state.searchedName);
-			}
-		);
+		this.setState({
+			searchedName: e.target.value,
+		});
 	};
 
 	handleClick = async (e) => {
@@ -55,6 +48,7 @@ class App extends Component {
 			const data = await getCityName(this.state.searchedName);
 			this.setState({
 				cityFound: data,
+				isWeatherMode: false,
 			});
 		} catch (error) {
 			console.log(error);
@@ -62,14 +56,12 @@ class App extends Component {
 	};
 
 	render() {
-		console.log("render Appjs");
 		return (
 			<>
-				<div className="background-gradient"></div>
 				<section className="top-banner">
 					<div className="container">
 						<h1 className="heading">Weather App</h1>
-						<form className="form" onClick={this.handleClick}>
+						<form className="form" onSubmit={this.handleClick}>
 							<input
 								name="searchedField"
 								type="text"
@@ -98,10 +90,3 @@ class App extends Component {
 }
 
 export default App;
-
-/* 
-  - AutoCompletion
-  - carousel for 12 hours forecast - no need 
-	- optimization
-	- 
-*/

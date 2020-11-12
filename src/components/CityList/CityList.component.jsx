@@ -12,8 +12,7 @@ const CityList = ({ data, ...props }) => {
 					console.log(
 						`${index} ${dt.LocalizedName}, ${dt.AdministrativeArea.ID}, ${dt.Country.ID}`
 					);
-					if (index <= 6) return <City key={dt.Key} data={dt} {...props} />;
-					return null;
+					return <City key={dt.Key} data={dt} {...props} />;
 				})}
 			</div>
 		</div>

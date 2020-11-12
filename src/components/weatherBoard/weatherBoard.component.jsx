@@ -7,7 +7,6 @@ import HourForecast from "../HourForecast/HourForecast.component";
 
 import { IconContext } from "react-icons";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
-import { fchmod } from "fs";
 
 const images = require.context("../../../public/img", true);
 
@@ -17,8 +16,6 @@ const WeatherBoard = ({
 	fiveDailyForecastData,
 	twelveHoursForecastData,
 }) => {
-	// const temperatureMetric = currentWeatherData[0].Temperature.Metric.Value;
-	console.log("fiveDailyForecastData", fiveDailyForecastData);
 	const temperatureImperial = currentWeatherData[0].Temperature.Imperial.Value;
 	const weatherText = currentWeatherData[0].WeatherText;
 	const weatherIcon = currentWeatherData[0].WeatherIcon;
@@ -28,11 +25,10 @@ const WeatherBoard = ({
 	const wind = currentWeatherData[0].Wind.Speed.Imperial.Value;
 	// const windGust = currentWeatherData[0].WindGust.Speed.Imperial.Value; // Unit: mile/h
 	const pressure = currentWeatherData[0].Pressure.Imperial.Value; // Unit: inHg
-	const visibility = currentWeatherData[0].Visibility.Imperial.Value; // mile
+	// const visibility = currentWeatherData[0].Visibility.Imperial.Value; // mile
 
 	const airQuality =
 		fiveDailyForecastData.DailyForecasts[0].AirAndPollen[0].Category;
-	console.log("twelveHoursForecastData", twelveHoursForecastData);
 
 	let image = images("./" + ("0" + weatherIcon).slice(-2) + "-s.png");
 
@@ -136,13 +132,14 @@ const WeatherBoard = ({
 	);
 };
 
+const changeBackgroundDefault = (e) => {
+	e.target.style.background = "white";
+};
+const changeBackgroundHover = (e) => {
+	e.target.style.background = "#aabbb5";
+};
+
 const ForwardArrow = ({ hourRef }) => {
-	const changeBackgroundDefault = (e) => {
-		e.target.style.background = "white";
-	};
-	const changeBackgroundHover = (e) => {
-		e.target.style.background = "#aabbb5";
-	};
 	const handleClick = () => {
 		hourRef.current.scrollLeft -= 20;
 	};
@@ -155,7 +152,6 @@ const ForwardArrow = ({ hourRef }) => {
 					width: "2rem",
 					top: "0",
 					right: "0",
-					backgroundColor: "green",
 				},
 			}}
 		>
@@ -172,12 +168,6 @@ const ForwardArrow = ({ hourRef }) => {
 };
 
 const BackArrow = ({ hourRef }) => {
-	const changeBackgroundDefault = (e) => {
-		e.target.style.background = "white";
-	};
-	const changeBackgroundHover = (e) => {
-		e.target.style.background = "#aabbb5";
-	};
 	const handleClick = () => {
 		hourRef.current.scrollLeft += 20;
 	};
