@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import "./App.css";
 import WeatherBoard from "./components/weatherBoard/weatherBoard.component";
-import { getCityName } from "./utils/utilities";
+import { getCityName, getAPIKey } from "./utils/utilities";
 import CityList from "./components/CityList/CityList.component";
 
 class App extends Component {
@@ -44,8 +44,9 @@ class App extends Component {
 
 	handleClick = async (e) => {
 		e.preventDefault();
+		const API_KEY = getAPIKey();
 		try {
-			const data = await getCityName(this.state.searchedName);
+			const data = await getCityName(this.state.searchedName, API_KEY);
 			this.setState({
 				cityFound: data,
 				isWeatherMode: false,

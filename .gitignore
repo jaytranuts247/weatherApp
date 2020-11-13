@@ -28,3 +28,6 @@ apiKey.js
 /src/utils/currentWeatherTestData.js
 /src/utils/fiveDaysForecastDummyData.js
 /src/utils/twelveHoursForecastDummyData.js
+
+# Local Netlify folder
+.netlify

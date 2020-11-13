@@ -1,9 +1,15 @@
-import { API_KEY } from "../apiKey";
+export const getAPIKey = () => {
+	if (process.env.NODE_ENV !== "production") {
+		return process.env.REACT_APP_API_KEY;
+	} else {
+		return process.env.API_KEY;
+	}
+};
 
-export const getCityName = async (searchedName) => {
+export const getCityName = async (searchedName, API_KEY) => {
 	try {
 		const cityNameResponse = await fetch(
-			`http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${API_KEY}&q=${searchedName}`
+			`https://dataservice.accuweather.com/locations/v1/cities/search?apikey=${API_KEY}&q=${searchedName}`
 		);
 		const cityList = cityNameResponse.json();
 		console.log("cityList", cityList);
@@ -13,10 +19,10 @@ export const getCityName = async (searchedName) => {
 	}
 };
 
-export const currentWeatherCondition = async (cityKey, isDetails) => {
+export const currentWeatherCondition = async (cityKey, isDetails, API_KEY) => {
 	try {
 		const weatherData = await fetch(
-			`http://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${API_KEY}&details=${isDetails}`
+			`https://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${API_KEY}&details=${isDetails}`
 		);
 		return weatherData.json();
 	} catch (error) {
@@ -24,10 +30,10 @@ export const currentWeatherCondition = async (cityKey, isDetails) => {
 	}
 };
 
-export const fiveDailyForecast = async (cityKey, isDetails) => {
+export const fiveDailyForecast = async (cityKey, isDetails, API_KEY) => {
 	try {
 		const forecastData = await fetch(
-			`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=${API_KEY}&details=${isDetails}`
+			`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=${API_KEY}&details=${isDetails}`
 		);
 		return forecastData.json();
 	} catch (error) {
@@ -35,10 +41,10 @@ export const fiveDailyForecast = async (cityKey, isDetails) => {
 	}
 };
 
-export const twelveHoursForecast = async (cityKey, isDetails) => {
+export const twelveHoursForecast = async (cityKey, isDetails, API_KEY) => {
 	try {
 		const twelveHoursForecastData = await fetch(
-			`http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/${cityKey}?apikey=${API_KEY}&details=${isDetails}`
+			`https://dataservice.accuweather.com/forecasts/v1/hourly/12hour/${cityKey}?apikey=${API_KEY}&details=${isDetails}`
 		);
 		return twelveHoursForecastData.json();
 	} catch (error) {
