@@ -26,10 +26,10 @@ yarn-error.log*
 
 apiKey.js
 
-/src/utils/citySample.js
-/src/utils/currentWeatherTestData.js
-/src/utils/fiveDaysForecastDummyData.js
-/src/utils/twelveHoursForecastDummyData.js
+src/utils/citySample.js
+src/utils/currentWeatherTestData.js
+src/utils/fiveDaysForecastDummyData.js
+src/utils/twelveHoursForecastDummyData.js
 
 # Local Netlify folder
 .netlify

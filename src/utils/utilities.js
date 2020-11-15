@@ -2,7 +2,6 @@ export const getAPIKey = () => {
 	if (process.env.NODE_ENV !== "production") {
 		return process.env.REACT_APP_API_KEY;
 	}
-	console.log(process.env);
 	return process.env.REACT_APP_API_KEY_PROD;
 };
 
@@ -11,9 +10,7 @@ export const getCityName = async (searchedName, API_KEY) => {
 		const cityNameResponse = await fetch(
 			`https://dataservice.accuweather.com/locations/v1/cities/search?apikey=${API_KEY}&q=${searchedName}`
 		);
-		const cityList = cityNameResponse.json();
-		console.log("cityList", cityList);
-		return cityList;
+		return cityNameResponse.json();
 	} catch (error) {
 		console.log("error", error);
 	}

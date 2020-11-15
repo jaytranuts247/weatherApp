@@ -45,7 +45,6 @@ class App extends Component {
 	handleClick = async (e) => {
 		e.preventDefault();
 		const API_KEY = getAPIKey();
-		console.log(API_KEY);
 		try {
 			const data = await getCityName(this.state.searchedName, API_KEY);
 			this.setState({
