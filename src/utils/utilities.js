@@ -1,9 +1,9 @@
 export const getAPIKey = () => {
 	if (process.env.NODE_ENV !== "production") {
 		return process.env.REACT_APP_API_KEY;
-	} else {
-		return process.env.API_KEY;
 	}
+	console.log(process.env);
+	return process.env.REACT_APP_API_KEY_PROD;
 };
 
 export const getCityName = async (searchedName, API_KEY) => {

@@ -11,6 +11,7 @@ import "./City.styles.css";
 
 const City = ({ data, setWeatherInfoState }) => {
 	const API_KEY = getAPIKey();
+
 	const handleClick = async (data) => {
 		try {
 			const cityKey = data.Key;
