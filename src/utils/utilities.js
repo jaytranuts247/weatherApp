@@ -1,11 +1,12 @@
-export const getAPIKey = () => {
-	if (process.env.NODE_ENV !== "production") {
-		return process.env.REACT_APP_API_KEY;
-	}
-	return process.env.REACT_APP_API_KEY_PROD;
-};
+var API_KEY;
 
-export const getCityName = async (searchedName, API_KEY) => {
+if (process.env.NODE_ENV !== "production") {
+	API_KEY = process.env.REACT_APP_API_KEY;
+} else {
+	API_KEY = process.env.REACT_APP_API_KEY_PROD;
+}
+
+export const getCityName = async (searchedName) => {
 	try {
 		const cityNameResponse = await fetch(
 			`https://dataservice.accuweather.com/locations/v1/cities/search?apikey=${API_KEY}&q=${searchedName}`
@@ -16,7 +17,7 @@ export const getCityName = async (searchedName, API_KEY) => {
 	}
 };
 
-export const currentWeatherCondition = async (cityKey, isDetails, API_KEY) => {
+export const currentWeatherCondition = async (cityKey, isDetails) => {
 	try {
 		const weatherData = await fetch(
 			`https://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${API_KEY}&details=${isDetails}`
@@ -27,7 +28,7 @@ export const currentWeatherCondition = async (cityKey, isDetails, API_KEY) => {
 	}
 };
 
-export const fiveDailyForecast = async (cityKey, isDetails, API_KEY) => {
+export const fiveDailyForecast = async (cityKey, isDetails) => {
 	try {
 		const forecastData = await fetch(
 			`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=${API_KEY}&details=${isDetails}`
@@ -38,7 +39,7 @@ export const fiveDailyForecast = async (cityKey, isDetails, API_KEY) => {
 	}
 };
 
-export const twelveHoursForecast = async (cityKey, isDetails, API_KEY) => {
+export const twelveHoursForecast = async (cityKey, isDetails) => {
 	try {
 		const twelveHoursForecastData = await fetch(
 			`https://dataservice.accuweather.com/forecasts/v1/hourly/12hour/${cityKey}?apikey=${API_KEY}&details=${isDetails}`
